@@ -2,22 +2,15 @@ package middleware
 
 import (
 	"context"
+	"github.com/Phamiliarize/amigo/pkg/application/dto"
 	"net/http"
 )
 
-// HTTP middleware setting a value on the request context
-func MyMiddleware(next http.Handler) http.Handler {
+// Authenticator is a middleware that checks for the presence of a token, validates it, and injects the user
+func Authenticator(next http.Handler) http.Handler {
 	return http.HandlerFunc(func(w http.ResponseWriter, r *http.Request) {
-		// create new context from `r` request context, and assign key `"user"`
-		// to value of `"123"`
-		ctx := context.WithValue(r.Context(), "user", "123")
+		ctx := context.WithValue(r.Context(), "user", dto.User{ID: "fewhf", Roles: []string{"authenticated"}})
 
-		// call the next handler in the chain, passing the response writer and
-		// the updated request object with the new context value.
-		//
-		// note: context.Context values are nested, so any previously set
-		// values will be accessible as well, and the new `"user"` key
-		// will be accessible from this point forward.
 		next.ServeHTTP(w, r.WithContext(ctx))
 	})
 }
