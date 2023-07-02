@@ -1,12 +1,29 @@
 # amigo
 amigo is a modern bulletin board software that aims to be performant, easily extensible, and simple to deploy.
 
-# Features
-At it's core, we have the staple categories, thread, and posts and all the features around it.
+# Features (Roadmap)
+More than categories, threads, and posts, a modern bulletin board needs;
 
-Markdown (0%) - Posts user markdown; it's modern and easy.
-Levels (0%) - Activity and kudos earn levels; different actions can be locked behind levels, giving a tool for filtering out bots, trolls, and bad actors.
-Profiles (0%) - User's can assume a different profile and post as that profile. Profiles are extensible.
-Themes (0%) - Easily override default templates and load custom CSS to create themes.
-In-App Notifications (0%) - Notify users of replies; staff of new posts
-Hooks (0%) - Extend functionality by triggering custom JavaScript before or after certain actions.
+- __Auth__ (0%)
+  - Amigo follows a BYO model- it seamlessly integrates with your existing identity solution by using [JWTs](https://jwt.io/). Simply map Amigo roles to your users in your identity provider and pass the JWK URL your instance should use to verify tokens.
+- __BBS__ (0%)
+  - Progressive enhancement/SSR for SEO
+  - Categories, threads, and posts
+  - Mod Tools
+    - Needs prep/user stories
+  - Private Functionality
+    - Private Categories
+    - Private Threads?
+    
+- __Extensible Markdown__ (0%)
+  - Safe, sanitized markdown that can be extended for your usecase.
+- __Themes__ (0%)
+  - Easily override default templates and load custom CSS to create themes.
+- __Hooks__ (0%)
+  - Extend functionality and execute your own scripts during the lifecycle of specific actions (tbd)
+- __In-App Notifications__ (0%)
+  - Notify users of replies; staff of new posts
+
+~~Levels (0%) - Activity and kudos earn levels; different actions can be locked behind levels, giving a tool for filtering out bots, trolls, and bad actors.
+Profiles (0%) - User's can assume a different profile and post as that profile. Profiles are extensible.~~
+:
