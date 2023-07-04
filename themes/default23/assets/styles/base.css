@@ -1,0 +1,45 @@
+/* The amigo base style includes default values and helpers that are universal amongst themes. */
+
+/* Reset */
+@import url('/assets/default23/styles/ress.min.css');
+
+/* Flexbox Grid */
+@import url('/assets/default23/styles/flexboxgrid.min.css');
+
+/* Variables */
+:root {
+    --spacing-1: .5em;
+    --spacing-2: 1em;
+    --spacing-3: 1.5em;
+    --spacing-4: 2em;
+    --spacing-5: 2.5em;
+    --reading-mode: 800px;
+}
+
+/* Font Utilities */
+.light {
+    font-weight: 300;
+}
+
+.regular {
+    font-weight: 500;
+}
+
+.bold {
+    font-weight: 600;
+}
+
+.lowercase {
+    text-transform: lowercase;
+}
+
+.uppercase {
+    text-transform: uppercase;
+}
+
+/* Utilities */
+[hidden] { display: none !important; }
+
+[x-cloak] {
+    display: none !important;
+}

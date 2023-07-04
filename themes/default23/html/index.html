@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html
+    lang="en"
+    xmlns:x-on="http://www.w3.org/1999/xhtml"
+>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link rel="stylesheet" href="assets/default23/styles/base.css">
+        <link rel="stylesheet" href="assets/default23/styles/style.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="/assets/default23/favicon/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="/assets/default23/favicon/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="/assets/default23/favicon/favicon-16x16.png">
+        <link rel="manifest" href="/assets/default23/favicon/site.webmanifest">
+        <script src="//unpkg.com/alpinejs" defer></script>
+        <title>amigo | {{.PageTitle}}</title>
+    </head>
+    <body x-data="{ narrowMode: false, menuOpen: false }" @resize.window="if (window.innerWidth < 1024) menuOpen = false">
+        <div class="root" :class="narrowMode && 'reading-mode'" x-transition>
+            <button class="mobile-menu-toggle" x-on:click="menuOpen = !menuOpen">
+                <span x-cloak x-show="!menuOpen" class="material-icons">&#xe9bd;</span>
+                <span x-cloak x-show="menuOpen" class="material-icons">&#xe5cd;</span>
+            </button>
+            <aside class="user-menu">
+                <div class="logo">
+                    <img src="/assets/default23/favicon/favicon-32x32.png" />
+                    <h1>AMIGO</h1>
+                </div>
+                <div class="badge">
+                    <div class="user-info">
+                        <img src="/assets/default23/avatar.png" alt="Avatar" class="avatar">
+                        <div class="user">
+                            <a href="#">amigouserno1</a>
+                            <br />
+                            <nav>
+                                notifications (23)
+                            </nav>
+                        </div>
+                    </div>
+                    <div class="user-stats">
+                        <div class="stat">
+                            <div class="row middle-xs">
+                                <img src="/assets/default23/favicon/favicon-32x32.png" class="icon-xs" />
+                                <h5>1</h5>
+                            </div>
+                            <p>awards</p>
+                        </div>
+                        <div class="stat">
+                            <div class="row middle-xs">
+                                <img src="/assets/default23/icons/post.png" class="icon-xs">
+                                <h5>215</h5>
+                            </div>
+                            <p>convos</p>
+                        </div>
+                    </div>
+                </div>
+                <nav class="main-nav" :class="menuOpen || 'menu-open'" x-transition>
+                    <ul>
+                        <li class="active">Recent Activity</li>
+                        <li>Rules</li>
+                        <li>Members</li>
+                    </ul>
+                    <div class="spacer"></div>
+                    <h6>Favourites</h6>
+                    <ul>
+                        <li>Tech/Mac</li>
+                    </ul>
+                    <h6>Community</h6>
+                    <ul>
+                        <li>Announcements</li>
+                        <li>Arrivals & Departures</li>
+                        <li>AMA</li>
+                        <li>Post Games</li>
+                    </ul>
+                </nav>
+            </aside>
+            <main>
+                <div class="utils">
+                    <div class="search">
+                        <span class="material-icons">&#xe8b6;</span>
+                        <input type="text" name="q" placeholder="Search Amigo..." autocomplete="off" inputmode="">
+                    </div>
+                    <button class="utils-button" x-on:click="narrowMode = !narrowMode" hidden>
+                        <span x-cloak x-show="!narrowMode" class="material-icons">&#xf8f6;</span>
+                        <span x-cloak x-show="narrowMode" class="material-icons">&#xf8f5;</span>
+                    </button>
+                </div>
+                <div class="content">
+                    <header>
+                        <h1>Recent Activity</h1>
+                    </header>
+
+                    <div class="banner">
+                        <div class="carousel">
+                            {{range .Todos}}
+                            <div class="item">
+                                <article>
+                                    <h6>{{.Title}}</h6>
+                                    <figure>what is this im watching the simpsons right now okay ssss excerpt of the thing of the thing yeah okay...</figure>
+                                    <div class="row between-xs">
+                                        <div class="col-xs">
+                                            <p>5 Minutes Ago</p>
+                                        </div>
+                                        <div class="col-xs">
+                                            <img src="/assets/default23/favicon/favicon-32x32.png" class="icon-xs" />
+                                        </div>
+                                    </div>
+                                </article>
+                            </div>
+                            {{end}}
+                        </div>
+                    </div>
+
+                    <div class="row border-between">
+                        <div class="col-md-12 col-lg-6">
+                            <h6>Top Awarded Threads
+                                <select name="example">
+                                    <option value="サンプル1">This Month</option>
+                                    <option value="サンプル2">This Week</option>
+                                    <option value="サンプル3">Today</option>
+                                </select>
+
+                            </h6>
+                            <ul>
+                                <li>s
+
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="col-md-12 col-lg-6">
+                            <h6>Top Awarded Replies
+                                <select name="example">
+                                    <option value="サンプル1">This Month</option>
+                                    <option value="サンプル2">This Week</option>
+                                    <option value="サンプル3">Today</option>
+                                </select>
+                            </h6>
+                            <ul>
+                                <li>s
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h6>Top Awarded Users
+                            <select name="example">
+                                <option value="サンプル1">This Month</option>
+                                <option value="サンプル2">This Week</option>
+                                <option value="サンプル3">Today</option>
+                            </select>
+                        </h6>
+                        <ul>
+                            <li>s
+
+                            </li>
+                        </ul>
+                    </div>
+
+                </div>
+                <footer>powered by <a href="#">AMIGO</a></footer>
+            </main>
+        </div>
+    </body>
+</html>

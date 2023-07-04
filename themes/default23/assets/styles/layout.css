@@ -1,0 +1,41 @@
+html {
+    background-color: var(--background-color);
+}
+
+.root {
+    margin: 0 auto;
+    display: grid;
+    grid-gap: var(--spacing-1);
+    grid-template-columns: auto;
+    grid-template-areas:
+        "menu"
+        "main";
+}
+
+/* Breakpoint */
+@media (min-width: 1024px) {
+    .root {
+        justify-content: center;
+        grid-template-columns: 250px  minmax(500px, 1200px);
+        grid-template-areas:
+            "menu main";
+    }
+
+    .reading-mode {
+        grid-template-columns: 250px  minmax(500px, 800px);
+    }
+
+    .utils-button[hidden] {
+        display: block !important;
+    }
+}
+
+/* Main Sections */
+main {
+    grid-area: main;
+    width: 100%;
+}
+
+.user-menu {
+    grid-area: menu;
+}

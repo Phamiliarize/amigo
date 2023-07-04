@@ -1,0 +1,70 @@
+@import url('https://fonts.googleapis.com/css2?family=Cabin:wght@400;700&family=Montserrat:wght@300;400;600&display=swap');
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    color: var(--font-color);
+    font-size: 16px;
+    line-height: 1.6;
+    word-wrap: break-word;
+}
+
+p {
+    margin-bottom: 1rem;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin-bottom: .5rem;
+    font-family: 'Cabin', sans-serif;
+    font-weight: 700;
+    line-height: 1.2;
+}
+
+
+h1 {
+    font-size: 2.75rem;
+}
+
+h2 {
+    font-size: 2.25rem;
+}
+
+h3 {
+    font-size: 2rem;
+}
+
+h4 {
+    font-size: 1.75rem;
+}
+
+h5 {
+    font-size: 1.5rem;
+}
+
+h6 {
+    font-size: 1.25rem;
+}
+
+ul, ol {
+    padding: 1rem;
+}
+
+/* Links */
+a {
+    font-weight: 700;
+    text-decoration: none;
+    color: var(--brand1);
+    border-bottom: 2px solid var(--brand1);
+}
+
+a:hover {
+    color: var(--brand2);
+    border-bottom: 2px solid var(--brand2);
+}
+
+.material-icons.md-18 { font-size: 18px; }
+.material-icons.md-24 { font-size: 24px; }
+.material-icons.md-36 { font-size: 36px; }
+.material-icons.md-48 { font-size: 48px; }
+
+.material-icons { color: var(--icon); }
+.material-icons.inactive { color: var(--icon-inactive); }

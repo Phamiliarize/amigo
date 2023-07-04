@@ -1,0 +1,36 @@
+/* Layout */
+@import url('/assets/default23/styles/layout.css');
+
+/* Typography */
+@import url('/assets/default23/styles/typography.css');
+
+/* Components */
+@import url('/assets/default23/styles/components.css');
+
+/* Defaults */
+:root,
+html {
+    --background-color: #d3d3d3;
+    --background-color-2: #e3e3e3;
+    --font-color: #132333;
+    --brand1: #209ebe;
+    --brand2: #e88353;
+    --icon-filter: invert(1);
+    --icon: rgba(19, 35, 51, 1);
+    --icon-inactive: rgba(19, 35, 51, 0.4);
+}
+
+/* Theme Variations */
+@media (prefers-color-scheme: dark) {
+    :root,
+    html {
+        --background-color: #060d11;
+        --background-color-2: #141c21;
+        --font-color: #c9c9c9;
+        --brand1: #2cb5da;
+        --brand2: #e88353;
+        --icon-filter: none;
+        --icon: rgba(201, 201, 201, 1);
+        --icon-inactive: rgba(201, 201, 201, 0.4);
+    }
+}

@@ -1,0 +1,9 @@
+<svg width="800" height="600" xmlns="http://www.w3.org/2000/svg">
+
+ <g>
+  <title>Fluid Layout</title>
+  <rect stroke-width="22" rx="11" id="svg_1" height="340" width="672.99998" y="130" x="63.5" stroke="#ffffff" fill-opacity="0" />
+  <rect rx="38" id="svg_2" height="0" width="1" y="322" x="593" stroke="#ffffff" fill="#ffffff"/>
+  <path id="svg_10" d="m666.99942,300.00019l-154.81544,-73.93287l0,36.96634l-224.36807,0l0,-36.96634l-154.81537,73.93287l154.81537,73.93247l0,-36.96624l224.36807,0l0,36.96624l154.81544,-73.93247z" stroke-width="0" stroke="#ffffff" fill="#ffffff"/>
+ </g>
+</svg>
