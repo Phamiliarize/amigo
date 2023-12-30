@@ -19,9 +19,12 @@ More than categories, threads, and posts, a modern bulletin board needs;
   - User Orgs
 - __Extensible Markdown__ (0%)
   - Safe, sanitized markdown that can be extended for your usecase.
-- __Themes__ (70%)
-  - Easily create themes via custom CSS; over-ride only the HTML templates you need
-  - Users can select a theme as part of their preferences
+- [__Themes__](https://github.com/Phamiliarize/amigo/blob/dev/docs/themes.md) (100%)
+  - Set a default theme for the board
+  - Users can select a preferred theme
+  - Easily customize themes via pure CSS
+  - Extend existing themes even further with a custom theme
+    - Simply include only the HTML templates you need to customize in your theme
 - __Hooks__ (0%)
   - Extend functionality and execute your own scripts during the lifecycle of specific actions (tbd)
 - __In-App Notifications__ (0%)

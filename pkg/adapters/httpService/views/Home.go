@@ -1,7 +1,10 @@
 package views
 
 import (
+	"log"
 	"net/http"
+
+	"github.com/Phamiliarize/amigo/pkg/application/dto"
 )
 
 // API adapter exposes REST API endpoints
@@ -11,18 +14,14 @@ type Todo struct {
 	Done  bool
 }
 type TodoPageData struct {
-	PageTitle string
-	Todos     []Todo
+	Todos []Todo
 }
 
 func (v ViewCollection) Home(w http.ResponseWriter, r *http.Request) {
-	theme := v.ThemesProvider.GetTheme()
-	//user := r.Context().Value("user").(dto.User)
-
-	t := RenderTemplate(theme, "index.html")
+	user := r.Context().Value("user").(dto.User)
+	theme := v.ThemeService.GetTheme(user.ID)
 
 	data := TodoPageData{
-		PageTitle: "Homepage",
 		Todos: []Todo{
 			{Title: "Task 1", Done: false},
 			{Title: "Task 2", Done: true},
@@ -34,5 +33,10 @@ func (v ViewCollection) Home(w http.ResponseWriter, r *http.Request) {
 	}
 
 	w.WriteHeader(http.StatusOK)
-	t.Execute(w, data)
+
+	err := v.RenderTemplate(w, theme, "home.html", data)
+	if err != nil {
+		log.Print(err.Error())
+		http.Error(w, "Internal Server Error", http.StatusInternalServerError)
+	}
 }

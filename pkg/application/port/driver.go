@@ -4,7 +4,10 @@ import (
 	"github.com/Phamiliarize/amigo/pkg/application/dto"
 )
 
-type ThemesProvider interface {
-	GetTheme() dto.Theme
-	GetThemes() []dto.Theme
+type SettingService interface {
+	GetGeneralSetting() (*dto.GeneralSetting, error)
+}
+
+type PreferencesService interface {
+	GetUserPreference(userID string) (*dto.Preference, error)
 }

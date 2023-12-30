@@ -2,13 +2,14 @@ package api
 
 import (
 	"encoding/json"
-	"fmt"
-	"github.com/Phamiliarize/amigo/pkg/application/dto"
+	"log"
 	"net/http"
+
+	"github.com/Phamiliarize/amigo/pkg/application/dto"
 )
 
 // JsonAPI adapter exposes a RESTful API that returns JSON
-type JsonAPI struct {}
+type JsonAPI struct{}
 
 func NewJsonAPI() JsonAPI {
 	return JsonAPI{}
@@ -25,7 +26,7 @@ func (a JsonAPI) GetMe(w http.ResponseWriter, r *http.Request) {
 
 	responseBody, err := json.Marshal(model)
 	if err != nil {
-		fmt.Printf("An error occurred during JSON Marshalling: %v\n", err.Error())
+		log.Fatalf("An error occurred during JSON Marshalling: %v\n", err.Error())
 		w.WriteHeader(http.StatusInternalServerError)
 		return
 	}

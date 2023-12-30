@@ -1,0 +1,75 @@
+{{define "title"}}Home{{end}}
+
+{{define "main"}}
+<header>
+    <h1>Recent Activity</h1>
+</header>
+
+<div class="banner">
+    <div class="carousel">
+        {{range .ViewData.Todos}}
+        <div class="item">
+            <article>
+                <h6>{{.Title}}</h6>
+                <figure>An excerpt of the post goes here, but the proper length is still yet to be decided, my friend. Begun the clone wars has...</figure>
+                <div class="row between-xs">
+                    <div class="col-xs">
+                        <p>5 Minutes Ago</p>
+                    </div>
+                    <div class="col-xs">
+                        <img src="/assets/default23/favicon/favicon-32x32.png" class="icon-xs" />
+                    </div>
+                </div>
+            </article>
+        </div>
+        {{end}}
+    </div>
+</div>
+
+<div class="row border-between">
+    <div class="col-md-12 col-lg-6">
+        <h6>Top Awarded Threads
+            <select name="example">
+                <option value="サンプル1">This Month</option>
+                <option value="サンプル2">This Week</option>
+                <option value="サンプル3">Today</option>
+            </select>
+
+        </h6>
+        <ul>
+            <li>s
+
+            </li>
+        </ul>
+    </div>
+    <div class="col-md-12 col-lg-6">
+        <h6>Top Awarded Replies
+            <select name="example">
+                <option value="サンプル1">This Month</option>
+                <option value="サンプル2">This Week</option>
+                <option value="サンプル3">Today</option>
+            </select>
+        </h6>
+        <ul>
+            <li>s
+
+            </li>
+        </ul>
+    </div>
+</div>
+
+<div>
+    <h6>Top Awarded Users
+        <select name="example">
+            <option value="サンプル1">This Month</option>
+            <option value="サンプル2">This Week</option>
+            <option value="サンプル3">Today</option>
+        </select>
+    </h6>
+    <ul>
+        <li>s
+
+        </li>
+    </ul>
+</div>
+{{end}}

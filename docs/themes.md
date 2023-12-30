@@ -40,4 +40,9 @@ Reference `default23` for the required templates in a theme. That said, a key fe
 
 When a theme is missing a template in the `html` directory, a fallback template is picked from `baseThemeDir` instead.
 
-You only need to include a template if you wish to override the base theme.
+You only need to include a template if you wish to override the base theme. In general, the following minimal files are needed for a theme to "stand alone"- though you can also just borrow the templates from another theme:
+1. A `layout.html` template
+2. A `header.html` template
+3. A `footer.html` template
+
+Header and Footer are purposely split out to allow for inclusion of custom styling or javascript ontop of existing themes without needing to edit them.

@@ -16,7 +16,7 @@ html {
 @media (min-width: 1024px) {
     .root {
         justify-content: center;
-        grid-template-columns: 250px  minmax(500px, 1200px);
+        grid-template-columns: 300px  minmax(500px, 1200px);
         grid-template-areas:
             "menu main";
     }

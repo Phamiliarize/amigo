@@ -26,7 +26,7 @@ func route(r chi.Router, method string, path string, roles []string, handler htt
 }
 
 // NewAmigoHTTPServer initializes an instance of the Amigo HTTP Server/MUX
-func NewAmigoHTTPServer(themesProvider port.ThemesProvider) *chi.Mux {
+func NewAmigoHTTPServer(ThemeService port.ThemeService, settingService port.SettingService) *chi.Mux {
 	r := chi.NewRouter()
 
 	// Middlewares
@@ -40,7 +40,7 @@ func NewAmigoHTTPServer(themesProvider port.ThemesProvider) *chi.Mux {
 
 	//Expose routes for themes public assets folders
 	workDir, _ := os.Getwd()
-	for _, theme := range themesProvider.GetThemes() {
+	for _, theme := range ThemeService.GetThemes() {
 		if theme.Publish {
 			themeAssetsPath := fmt.Sprintf("%s/assets", theme.Path)[1:]
 			filesDir := http.Dir(filepath.Join(workDir, themeAssetsPath))
@@ -51,7 +51,7 @@ func NewAmigoHTTPServer(themesProvider port.ThemesProvider) *chi.Mux {
 
 	// Initialize API & Views
 	jsonAPI := api.NewJsonAPI()
-	viewCollection := views.NewViewCollection(themesProvider)
+	viewCollection := views.NewViewCollection(ThemeService)
 
 	// Routes
 	r.Group(func(r chi.Router) {
