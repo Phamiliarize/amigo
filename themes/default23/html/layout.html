@@ -7,11 +7,11 @@
     <head>
         {{template "head" .}}
     </head>
-    <body x-data="{ narrowMode: false, menuOpen: false }" @resize.window="if (window.innerWidth < 1024) menuOpen = false">
+    <body x-data="{ narrowMode: {{ .ReadingMode }}, menuOpen: false, ...layoutMethods }" @resize.window="if (window.innerWidth < 1024) menuOpen = false" x-cloak>
         <div class="root" :class="narrowMode && 'reading-mode'" x-transition>
             <button class="mobile-menu-toggle" x-on:click="menuOpen = !menuOpen">
-                <span x-cloak x-show="!menuOpen" class="material-icons">&#xe9bd;</span>
-                <span x-cloak x-show="menuOpen" class="material-icons">&#xe5cd;</span>
+                <span x-show="!menuOpen" class="material-icons">&#xe9bd;</span>
+                <span x-show="menuOpen" class="material-icons">&#xe5cd;</span>
             </button>
             <aside class="user-menu">
                 <div class="logo">
@@ -72,14 +72,33 @@
                         <span class="material-icons">&#xe8b6;</span>
                         <input type="text" name="q" placeholder="Search Amigo..." autocomplete="off" inputmode="">
                     </div>
-                    <button class="utils-button" x-on:click="narrowMode = !narrowMode" hidden>
-                        <span x-cloak x-show="!narrowMode" class="material-icons">&#xf8f6;</span>
-                        <span x-cloak x-show="narrowMode" class="material-icons">&#xf8f5;</span>
+                    <button class="utils-button" x-on:click="patchPreference()" hidden>
+                        <span x-show="!narrowMode" class="material-icons">&#xf8f6;</span>
+                        <span x-show="narrowMode" class="material-icons">&#xf8f5;</span>
                     </button>
                 </div>
                 <div class="content">
                     {{template "main" .}}
                 </div>
+                <script>
+                    const layoutMethods = {
+                        async patchPreference() {
+                            let response = await fetch("/api/preference", {
+                                method: "PATCH",
+                                headers: new Headers({
+                                    "Content-Type": "application/json",
+                                }),
+                                body: JSON.stringify({ readingMode: !this.narrowMode }),
+                            });
+
+                            if (response.status == 204) {
+                                this.narrowMode = !this.narrowMode
+                            }
+                        }
+                    }
+
+                    window.layoutMethods = layoutMethods
+                </script>
                 {{template "footer" .}}
             </main>
         </div>

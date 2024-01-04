@@ -4,7 +4,9 @@ import (
 	"net/http"
 
 	"github.com/Phamiliarize/amigo/pkg/adapters/httpService"
+	"github.com/Phamiliarize/amigo/pkg/adapters/httpService/api"
 	"github.com/Phamiliarize/amigo/pkg/adapters/httpService/db"
+	"github.com/Phamiliarize/amigo/pkg/adapters/httpService/views"
 	"github.com/Phamiliarize/amigo/pkg/application/preferences"
 	"github.com/Phamiliarize/amigo/pkg/application/setting"
 	"github.com/Phamiliarize/amigo/pkg/application/themes"
@@ -21,10 +23,15 @@ func main() {
 	// Load Themes
 	themes := themes.NewThemeService(settingService, preferencesService)
 
+	// Initialize API & Views
+	jsonAPI := api.NewJsonAPI(preferencesService)
+	viewCollection := views.NewViewCollection(themes)
+
 	// Initialize the Amigo HTTP Service MUX
 	r := httpService.NewAmigoHTTPServer(
+		jsonAPI,
+		viewCollection,
 		themes,
-		settingService,
 	)
 
 	// Start serving the MUX

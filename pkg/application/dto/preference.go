@@ -1,5 +1,6 @@
 package dto
 
 type Preference struct {
-	Theme string
+	Theme       NullString
+	ReadingMode NullBool
 }

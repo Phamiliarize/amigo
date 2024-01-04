@@ -1,10 +1,11 @@
 package middleware
 
 import (
+	"net/http"
+
 	"github.com/Phamiliarize/amigo/pkg/application/dto"
 	"github.com/go-chi/chi/v5"
 	"golang.org/x/exp/slices"
-	"net/http"
 )
 
 // RouteTable is meant to hold the mapping of routes and their allowed RBAC roles

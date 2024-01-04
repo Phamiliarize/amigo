@@ -23,3 +23,12 @@ func (p Preferences) GetUserPreference(userID string) (*dto.Preference, error) {
 
 	return preference, nil
 }
+
+func (p Preferences) UpdateUserPreference(userID string, update dto.Preference) error {
+	err := p.db.UpdateUserPreference(userID, update)
+	if err != nil {
+		return err
+	}
+
+	return nil
+}

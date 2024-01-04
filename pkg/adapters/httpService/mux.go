@@ -26,7 +26,7 @@ func route(r chi.Router, method string, path string, roles []string, handler htt
 }
 
 // NewAmigoHTTPServer initializes an instance of the Amigo HTTP Server/MUX
-func NewAmigoHTTPServer(ThemeService port.ThemeService, settingService port.SettingService) *chi.Mux {
+func NewAmigoHTTPServer(jsonAPI api.JsonAPI, viewCollection views.ViewCollection, ThemeService port.ThemeService) *chi.Mux {
 	r := chi.NewRouter()
 
 	// Middlewares
@@ -49,17 +49,14 @@ func NewAmigoHTTPServer(ThemeService port.ThemeService, settingService port.Sett
 		}
 	}
 
-	// Initialize API & Views
-	jsonAPI := api.NewJsonAPI()
-	viewCollection := views.NewViewCollection(ThemeService)
-
 	// Routes
 	r.Group(func(r chi.Router) {
 		// Authorizer needs to be beneath the group in order to receive the routed path
 		r.Use(authorizer.Authorizer)
 
 		// JSON API Routes
-		route(r, "GET", "/api/me", []string{"unauthenticated", "authenticated"}, jsonAPI.GetMe)
+		route(r, "GET", "/api/me", []string{"authenticated"}, jsonAPI.GetMe)
+		route(r, "PATCH", "/api/preference", []string{"authenticated"}, jsonAPI.PatchPreferences)
 
 		// Views
 		route(r, "GET", "/", []string{"unauthenticated", "authenticated"}, viewCollection.Home)

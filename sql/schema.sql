@@ -16,5 +16,6 @@ CREATE UNIQUE INDEX unique_display_name ON "user" (display_name);
 
 CREATE TABLE preference (
     user_id uuid REFERENCES "user"(id) NOT NULL PRIMARY KEY,
-    theme VARCHAR
+    theme VARCHAR,
+    reading_mode BOOLEAN
 );

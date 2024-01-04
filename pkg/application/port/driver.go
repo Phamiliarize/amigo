@@ -10,4 +10,5 @@ type SettingService interface {
 
 type PreferencesService interface {
 	GetUserPreference(userID string) (*dto.Preference, error)
+	UpdateUserPreference(userID string, update dto.Preference) error
 }

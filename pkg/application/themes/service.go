@@ -75,7 +75,7 @@ func (t ThemeService) GetTheme(userID string) dto.Theme {
 		}
 	}
 
-	// Anonymous users should use default theme
+	// Anonymous users don't have any preferences
 	if userID != "" {
 		p, err := t.preferencesService.GetUserPreference(userID)
 		if err != nil {
@@ -83,12 +83,18 @@ func (t ThemeService) GetTheme(userID string) dto.Theme {
 				log.Printf("Failed to retrieve user preference: %v\n", err)
 			}
 		} else {
-			for _, t := range t.Themes {
-				if t.Dir == p.Theme {
-					theme = t
-					break
+			// Set the users preferred theme; if they have one
+			if p.Theme.Valid {
+				for _, t := range t.Themes {
+					if t.Dir == p.Theme.String {
+						theme = t
+						break
+					}
 				}
 			}
+
+			// The users preference for reading mode
+			theme.ReadingMode = p.ReadingMode.Bool
 		}
 	}
 

@@ -12,6 +12,7 @@ type Theme struct {
 	Path         string
 	Dir          string
 	BaseThemeDir string
+	ReadingMode  bool
 }
 
 type CachedThemeMetadata struct {

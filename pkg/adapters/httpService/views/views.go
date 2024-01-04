@@ -10,8 +10,9 @@ import (
 )
 
 type TemplateData struct {
-	Metadata dto.ThemeMetadata
-	ViewData any
+	ReadingMode bool
+	Metadata    dto.ThemeMetadata
+	ViewData    any
 }
 
 // ViewCollection is a collection of renderable HTML Templates, effectively the UI of Amigo
@@ -31,8 +32,9 @@ func (v ViewCollection) RenderTemplate(w http.ResponseWriter, theme dto.Theme, h
 	var t *template.Template
 
 	fullData := TemplateData{
-		Metadata: v.ThemeService.GetCachedThemeMetadata().ThemeMetadata,
-		ViewData: data,
+		ReadingMode: theme.ReadingMode,
+		Metadata:    v.ThemeService.GetCachedThemeMetadata().ThemeMetadata,
+		ViewData:    data,
 	}
 
 	layoutTemplate := fmt.Sprintf("%s/html/layout.html", theme.Path)

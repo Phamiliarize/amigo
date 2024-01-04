@@ -13,4 +13,5 @@ type ThemeService interface {
 type Database interface {
 	GetGeneralSetting() (*dto.GeneralSetting, error)
 	GetUserPreference(userID string) (*dto.Preference, error)
+	UpdateUserPreference(userID string, update dto.Preference) error
 }
